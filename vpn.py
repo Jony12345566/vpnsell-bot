@@ -10,10 +10,10 @@ bot = telebot.TeleBot(TOKEN)
 
 BKASH_NO = "01615682337" 
 NAGAD_NO = "01615682337"
-
+DB_PATH = '/data/vpn_pro.db' if os.path.exists('/data') else 'vpn_pro.db'
 # --- Database Setup ---
 def init_db():
-    conn = sqlite3.connect('vpn_pro.db')
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute('''CREATE TABLE IF NOT EXISTS vpns (id INTEGER PRIMARY KEY, name TEXT, price REAL, duration TEXT)''')
     cursor.execute('''CREATE TABLE IF NOT EXISTS stock (id INTEGER PRIMARY KEY, vpn_id INTEGER, account_info TEXT)''')
